@@ -4,6 +4,18 @@ import TheWelcome from '../components/TheWelcome.vue'
 
 <template>
   <main>
-    <TheWelcome />
+    <div class="home">
+      <TheWelcome />
+    </div>
   </main>
 </template>
+
+<style>
+@media (min-width: 1024px) {
+  .home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style>

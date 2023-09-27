@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
+import DocumentationIcon from './icons/IconEcosystem.vue'
 </script>
 
 <template>
   <WelcomeItem>
     <DocumentationIcon />
-
-    Vue
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
+    <h1><span class="green">Home</span> page</h1>
   </WelcomeItem>
 </template>
