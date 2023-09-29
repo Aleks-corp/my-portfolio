@@ -12,5 +12,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  base: '/my-portfolio',
   publicPath: process.env.NODE_ENV === 'production' ? '/my-portfolio/' : '/'
 })
