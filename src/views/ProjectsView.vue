@@ -1,6 +1,6 @@
 <template>
   <div class="projects">
-    <h1>This is an <span class="green">Project</span> page</h1>
+    <h1>This is an <span class="accent">Project page</span></h1>
   </div>
 </template>
 
