@@ -1,17 +1,13 @@
 @import './reset.css';
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-a,
-.green {
+a {
   text-decoration: none;
-  color: #00bd7e;
+  color: var(--color-text);
   transition: 0.4s;
+}
+.accent {
+  color: var(--color-text-accent);
 }
 .hidden {
   position: absolute;
@@ -21,7 +17,7 @@ a,
   height: 1px;
   visibility: hidden;
 }
-.accent {
+.accentGradient {
   background-image: linear-gradient(135deg, #41d392, #54b2bd, #6287f3);
   background-size: 100%;
   background-clip: text;

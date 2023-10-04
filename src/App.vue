@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import IconMail from './components/icons/IconMailTo.vue'
 import Menu from './components/icons/IconMenu.vue'
 import CloseMenu from './components/icons/IconCloseMenu.vue'
 import { onUnmounted, reactive } from 'vue'
@@ -22,7 +21,7 @@ onUnmounted(() => {
 
 <template>
   <header class="header">
-    <p class="header__logo accent">My Portfolio</p>
+    <p class="header__logo accentGradient">Portfolio</p>
     <nav>
       <button @click="state.seen = !state.seen" v-if="state.windowWidth < 768">
         <div v-if="state.seen"><CloseMenu /></div>
@@ -30,16 +29,26 @@ onUnmounted(() => {
       </button>
       <Transition>
         <div class="header__nav" v-if="state.seen || state.windowWidth > 767">
-          <RouterLink to="/" @click="state.seen = !state.seen">Home</RouterLink>
-          <RouterLink to="/about" @click="state.seen = !state.seen">About</RouterLink>
-          <RouterLink to="/projects" @click="state.seen = !state.seen">My projects</RouterLink>
-          <RouterLink to="/contacts" @click="state.seen = !state.seen">Contacts</RouterLink>
+          <RouterLink class="header__nav__link" to="/" @click="state.seen = false">Home</RouterLink>
+          <RouterLink class="header__nav__link" to="/about" @click="state.seen = false"
+            >About</RouterLink
+          >
+          <RouterLink class="header__nav__link" to="/projects" @click="state.seen = false"
+            >My projects</RouterLink
+          >
+          <RouterLink class="header__nav__link" to="/contacts" @click="state.seen = false"
+            >Contacts</RouterLink
+          >
         </div>
       </Transition>
     </nav>
-    <div class="header__mail">
-      <IconMail />
-      <a href="mailto:aleks.haran.dev@gmail.com">aleks.haran.dev@gmail.com</a>
+    <div class="header__mail" v-if="state.seen || state.windowWidth > 767">
+      <a
+        class="header__nav__cv"
+        href="https://drive.google.com/file/d/1vydLRrwpNI7HpjYWv8hJvZ1ryWy7Cugx/view?usp=sharing"
+        target="_blank"
+        >My CV</a
+      >
     </div>
   </header>
   <main>
@@ -49,6 +58,9 @@ onUnmounted(() => {
 
 <style scoped>
 .header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 50px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -62,29 +74,42 @@ onUnmounted(() => {
   position: absolute;
   top: 50px;
   right: 50px;
+  z-index: 10;
   border-radius: 10px;
-  padding: 20px 60px;
+  padding: 20px 60px 60px;
   background-color: var(--color-background);
 }
-.header__nav a {
+.header__nav__link {
+  position: relative;
   display: block;
-  padding: 20px 0;
+  margin: 15px 0;
+  font-weight: 300;
 }
 
 .header__nav a.router-link-exact-active {
-  color: var(--color-text);
+  color: var(--color-text-accent);
 }
 .header__nav a.router-link-exact-active:hover {
   background-color: transparent;
 }
 
 .header__mail {
-  display: none;
+  position: absolute;
+  top: 270px;
+  right: 135px;
 }
 .header__logo {
-  width: 220px;
   font-size: 24px;
   font-weight: 600;
+}
+.header__nav__cv {
+  color: var(--color-text-accent-fill);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 4px 3px 7px 0px rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--color-text-accent-fill);
 }
 .v-enter-active,
 .v-leave-active {
@@ -104,22 +129,30 @@ onUnmounted(() => {
     align-items: center;
     padding: 0;
   }
-  .header__nav a {
+  .header__nav__link {
     display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
+    margin: 0 15px;
   }
-  .header__nav a:first-of-type {
-    border: 0;
+
+  .header__nav__link::after {
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    bottom: -5px;
+    right: 50%;
+    transform: translate(50%);
+    content: '';
+  }
+  .header__nav__link:hover.header__nav__link::after {
+    width: calc(100%);
+    transition: width 0.3s ease-in-out;
+  }
+  .header__mail {
+    position: static;
   }
 }
 
 @media (min-width: 1024px) {
-  .header__mail {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 220px;
-  }
 }
 </style>
