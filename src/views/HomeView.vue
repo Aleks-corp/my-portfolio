@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import IconMail from '../components/icons/IconMailTo.vue'
+import Facebook from '../components/icons/IconFacebook.vue'
+import GitHub from '../components/icons/IconGitHub.vue'
+import LinkedIn from '../components/icons/IconLinkedIn.vue'
 </script>
 
 <template>
   <section class="hero">
+    <div class="hero__bg"></div>
     <div class="hero__container">
-      <div class="hero__bg"></div>
       <div class="hero__text__container">
         <h1 class="hidden">Portfolio</h1>
         <h2 class="hero__text">Hello World</h2>
@@ -18,8 +21,17 @@ import IconMail from '../components/icons/IconMailTo.vue'
         <div class="background__image__green"></div>
       </div>
       <div class="social__container">
-        <IconMail /><IconMail /><IconMail />
+        <a href="https://github.com/Aleks-corp" target="_blank"><GitHub /></a>
+        <a href="https://www.facebook.com/aleks.root.corp/" target="_blank"><Facebook /></a>
+        <a href="https://www.linkedin.com/in/aleks-haran-dev" target="_blank"><LinkedIn /></a>
+
         <div class="social__line"></div>
+      </div>
+      <div class="mail__container">
+        <a href="mailto:aleks.haran.dev@gmail.com"
+          ><span class="mail__text">aleks.haran.dev@gmail.com</span></a
+        ><IconMail />
+        <div class="mail__line"></div>
       </div>
     </div>
   </section>
@@ -29,17 +41,11 @@ import IconMail from '../components/icons/IconMailTo.vue'
 </template>
 
 <style>
-.hero__bg {
-  position: absolute;
-  left: -60px;
-  bottom: -200px;
-  width: 100%;
-  height: 100%;
-  background-image: url(../assets/objects.png);
-  background-repeat: no-repeat;
+.hero {
   object-fit: cover;
   overflow: hidden;
 }
+
 .hero__text {
   font-size: 54px;
   font-weight: 300;
@@ -135,6 +141,28 @@ import IconMail from '../components/icons/IconMailTo.vue'
   height: 62px;
   background: linear-gradient(180deg, #41d392 9.95%, #54b2bd 51.55%, #6287f3 87.59%);
 }
+.mail__container {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30px;
+}
+.mail__text {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.3;
+}
+.mail__line {
+  width: 2px;
+  height: 162px;
+  background: linear-gradient(180deg, #41d392 9.95%, #54b2bd 51.55%, #6287f3 87.59%);
+}
 
 .about {
   height: 200px;
@@ -155,6 +183,17 @@ import IconMail from '../components/icons/IconMailTo.vue'
   .hero__text__container {
     width: 530px;
     margin-bottom: 0;
+  }
+  .hero__bg {
+    position: absolute;
+    left: -400px;
+    top: 250px;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/objects.svg);
+    background-repeat: no-repeat;
+    background-position: top left;
+    z-index: -1;
   }
 }
 @media (min-width: 1280px) {

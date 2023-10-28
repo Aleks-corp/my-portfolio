@@ -42,14 +42,16 @@ onUnmounted(() => {
         </div>
       </Transition>
     </nav>
-    <div class="header__mail" v-if="state.seen || state.windowWidth > 767">
-      <a
-        class="header__nav__cv"
-        href="https://drive.google.com/file/d/1vydLRrwpNI7HpjYWv8hJvZ1ryWy7Cugx/view?usp=sharing"
-        target="_blank"
-        >My CV</a
-      >
-    </div>
+    <Transition>
+      <div class="header__cv" v-if="state.seen || state.windowWidth > 767">
+        <a
+          class="header__cv__link"
+          href="https://drive.google.com/file/d/1vydLRrwpNI7HpjYWv8hJvZ1ryWy7Cugx/view?usp=sharing"
+          target="_blank"
+          >My CV</a
+        >
+      </div>
+    </Transition>
   </header>
   <main>
     <RouterView />
@@ -93,16 +95,17 @@ onUnmounted(() => {
   background-color: transparent;
 }
 
-.header__mail {
+.header__cv {
   position: absolute;
   top: 270px;
   right: 135px;
+  z-index: 12;
 }
 .header__logo {
   font-size: 24px;
   font-weight: 600;
 }
-.header__nav__cv {
+.header__cv__link {
   color: var(--color-text-accent-fill);
   font-size: 16px;
   font-weight: 600;
@@ -148,7 +151,7 @@ onUnmounted(() => {
     width: calc(100%);
     transition: width 0.3s ease-in-out;
   }
-  .header__mail {
+  .header__cv {
     position: static;
   }
 }
